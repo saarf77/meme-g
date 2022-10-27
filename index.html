@@ -14,22 +14,23 @@
 
 
     <div class="main-screen" onclick="toggleMenu()"></div>
-    
     <header class="main-header main-layout flex space-between align-center">
         <div class="logo"></div>
         <nav>
             <ul class="main-nav clean-list flex">
                 <li onclick="onGalleryShow()">Gallery</li>
-                <li onclick="onRenderSavedMemes()">Memes</li>
+                <li class="saved-meme-page">Memes</li>
                 <li onclick="onReplaceSiteToLinkedin()">About</li>
             </ul>
         </nav>
         <button class="toggle-menu" onclick="toggleMenu()">☰</button>
     </header>
-    
-    
-    <input type="file" class="file-input btn hide-element" name="image" onchange="onImgInput(event)" />
+
+
+
     <main class="main-content main-layout">
+        <input type="file" class="file-input btn hide-element    flexible-btn" name="image"
+            onchange="onImgInput(event)" />
         <section class="filters-container flex">
             <div class="search-keyword-container flex space-between">
                 <datalist id="search-list"></datalist>
@@ -40,15 +41,14 @@
 
 
             <div class="filter-keywords flex align-center">
-                <button class="funny" value="funny" onclick="onIncreaseFontSizeAndFilter(this)" >Funny</button>
-                <button class="animal" value="animal" onclick="onIncreaseFontSizeAndFilter(this)" >Animal</button>
-                <button class="men" value="men" onclick="onIncreaseFontSizeAndFilter(this)" >Men</button>
-                <button class="actor" value="actor" onclick="onIncreaseFontSizeAndFilter(this)" >Actor</button>
-                <button class="cute" value="cute" onclick="onIncreaseFontSizeAndFilter(this)" >Cute</button>
+                <button class="funny" value="funny" onclick="onIncreaseFontSizeAndFilter(this)">Funny</button>
+                <button class="animal" value="animal" onclick="onIncreaseFontSizeAndFilter(this)">Animal</button>
+                <button class="men" value="men" onclick="onIncreaseFontSizeAndFilter(this)">Men</button>
+                <button class="actor" value="actor" onclick="onIncreaseFontSizeAndFilter(this)">Actor</button>
+                <button class="cute" value="cute" onclick="onIncreaseFontSizeAndFilter(this)">Cute</button>
             </div>
             <!-- <button class="flexible-btn" onclick="onRandomMeme()">I'm flexible</button> -->
-            <button class="flexible-btn" >I'm flexible</button>
-            <!-- <button class="flexible-btn" onclick="onRandomMeme()">I'm flexible</button> -->
+            <button class="flexible-btn">I'm flexible</button>
             <button class="more-btn" onclick="onReplaceSiteToGithub()">More</button>
         </section>
 
@@ -61,52 +61,59 @@
 
             <div class="editing-features">
                 <input class="meme-text-input" type="text" onkeyup="onSetLineText(this)"
-                placeholder="Write something :)">
+                    placeholder="Write something :)">
 
                 <div class="line-change-btns">
                     <button class="line-switch btn" onclick="onSwitchLine()"> <img class="img-arrows icon"
-                        src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png" /></button>
+                            src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png" /></button>
                     <button class="line-add btn" onclick="onAddLine()"> <img class="img-plus icon"
-                        src="img/icons/add.png" /></button>
+                            src="img/icons/add.png" /></button>
                     <button class="line-delete btn" onclick="onDeleteLine()"> <img class="img-trash icon"
-                        src="img/icons/trash.png" /></button>
+                            src="img/icons/trash.png" /></button>
                 </div>
 
                 <div class="updates-btns">
                     <button class="font-increase btn" onclick="onChangeFontSize(2)"> <img class="icon"
-                        src="img/icons/increase font - icon.png" /></button>
+                            src="img/icons/increase font - icon.png" /></button>
                     <button class="font-decrease btn" onclick="onChangeFontSize(-2)"> <img class="icon"
-                        src="img/icons/decrease font - icon.png" /></button>
+                            src="img/icons/decrease font - icon.png" /></button>
                     <button class="text-move-left btn" onclick="onMoveText('right')"> <img class="icon"
-                        src="img/icons/align-to-left.png" /></button>
+                            src="img/icons/align-to-left.png" /></button>
                     <button class="text-move-center btn" onclick="onMoveText('center')"> <img class="icon"
-                        src="img/icons/center-text-alignment.png" /></button>
+                            src="img/icons/center-text-alignment.png" /></button>
                     <button class="text-move-right btn" onclick="onMoveText('left')"> <img class="icon"
-                        src="img/icons/align-to-right.png" /></button>
+                            src="img/icons/align-to-right.png" /></button>
                     <button class="text-move-up btn" onclick="onMoveTextX(-5)"> <img class="icon"
-                        src="img/icons/arrows-up.png" /></button>
+                            src="img/icons/arrows-up.png" /></button>
                     <button class="text-move-down btn" onclick="onMoveTextX(5)"> <img class="icon"
-                        src="img/icons/arrows-down.png" /></button>
-                    <select class="font-type btn" onclick="onChangeFontFamily(this)">
+                            src="img/icons/arrows-down.png" /></button>
+                    <select class="font-type btn" onclick="onChangeFontFamily(this.value)">
                         <option value="Impact">Impact</option>
                         <option value="Arial">Arial</option>
                         <option value="David">David</option>
                     </select>
                     <button class="font-clr-change btn" onclick="document.querySelector('.fill-color').click()">
                         <input class="fill-color hide-element" type="color" name="font-clr-change" value="#f33f33"
-                        oninput="onChangeColor(this.value)" /> <img class="icon"
-                        src="img/icons/paint-board-and-brush.png" />
-
-                  
+                            oninput="onChangeColor(this.value)" /> <img class="icon"
+                            src="img/icons/paint-board-and-brush.png" />
                 </div>
 
                 <div class="clouds-btns flex">
                     <button class="download-btn btn"><a href="#" onclick="downloadCanvas(this)"
-                        download="cool-meme">Download</a></button>
-                    <button class="share-btn btn"><a href="#" onclick="downloadCanvas(this)"
-                        download="cool-meme">Share</a></button>
+                            download="cool-meme">Download </a><img class="icon" src="img/icons/download.png"
+                            alt=""></button>
+                    <button class="share-btn btn"><a href="https://www.facebook.com/sharer/sharer.php?u=example.org"
+                            target="_blank">
+                            Share  <img class="icon" src="img/icons/facebook-logo.png" alt="">
+                        </a></button>
+
                     <button class="save-btn btn" onclick="onSaveMeme()">Save</button>
                     <button class="delete-btn btn" onclick="onDeleteMeme()">Delete</button>
+                    <p><button>Share !</button></p>
+                    <p class="result"></p>
+                </div>
+                <div><button class="flex"><img class="icon" src="img/icons/upload.png" alt="" srcset=""><input type="file"
+                            class="file-input btn" name="image" onchange="onImgInput(event)" /></button>
                 </div>
             </div>
         </section>
@@ -120,7 +127,6 @@
     <!-- <script src="js/services/galley.service.js"></script> -->
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/utils.js"></script>
-    
     <script src="js/controllers/main.controller.js"></script>
     <script src="js/services/upload.service.js"></script>
     <!-- <script src="js/controllers/gallery.controller.js"></script> -->

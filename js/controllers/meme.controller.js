@@ -1,4 +1,5 @@
 let gMeme
+const ALL_MEMES = "ALL_MEMES"
 
 function initGMeme() {
   gMeme = {
@@ -108,8 +109,7 @@ function isLineClicked(clickedPos) {
     }
     gMeme.selectedLineIdx = selectedLine
     gMeme.lines[selectedLine].isSelected = true
-
-
+    document.querySelector("input[class='meme-text-input'").value = gMeme.lines[selectedLine].txt
   }
 }
 
@@ -144,3 +144,62 @@ function setMemeText(val,imgId)
 }
 
 
+function moveText(direction,imgId)
+{
+  var curIndex =gMeme.selectedLineIdx
+  if(curIndex !==-1){
+    switch (direction) {
+      case 'right':
+        gMeme.lines[curIndex].align = 'end'
+        break;
+      case 'center':
+        gMeme.lines[curIndex].align = 'center'
+        break;      
+      case 'left':
+        gMeme.lines[curIndex].align = 'start'
+        break;
+      default:
+        break;
+    }
+  }
+  renderMeme(imgId)
+}
+
+function changeFontFamily(font, imgId) {
+  var currIndex =gMeme.selectedLineIdx
+  if(currIndex !==-1){
+  gMeme.lines[currIndex].fontfamily = font.toLowerCase()
+  }
+  renderMeme(imgId)
+}
+
+function changeFontSize(val,imgId){
+  var currIndex =gMeme.selectedLineIdx
+  if(currIndex !==-1){
+
+    if(gMeme.lines[currIndex].size + val >8 && gMeme.lines[currIndex].size + val < 80)
+    {
+      gMeme.lines[currIndex].size += val 
+    }
+  }
+  renderMeme(imgId)
+}
+
+
+function saveMemes()
+ {
+ var curImgData = getBase64Image();
+ var allSaveImg = loadFromStorage(ALL_MEMES)
+   if(allSaveImg === null)
+     {
+      allSaveImg = []
+     }
+      allSaveImg.push(curImgData)
+      saveToStorage(ALL_MEMES,allSaveImg)
+ }
+
+function getBase64Image() {
+  var dataURL = gElCanvas.toDataURL("image/png");
+
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}

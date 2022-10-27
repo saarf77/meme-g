@@ -13,6 +13,7 @@ function renderSavedMemes() {
 }
   
 
+
 function markLine(line) {
   if (!line) return
   const lineWidth = gCtx.measureText(line.txt).width + line.size
