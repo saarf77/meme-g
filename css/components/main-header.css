@@ -6,17 +6,24 @@
     font-size: 1.3rem;
     height: 4.3rem;
     border-radius: 2.1rem;
-    padding: 0 80px;
-    margin-bottom: 10px;
+    padding: 0 2em;
+    margin-bottom: 20px;
 }
 
 
-
+.logo {
+    background: url("../../img/logo/LOGO.png");
+    background-position:  center;
+    background-size: cover;
+    width: 15rem;
+    height: 2.7rem;
+    margin-top: .1em;
+}
 
 .main-header .main-nav li:hover {
-    background-color: var(--clr2);
-    color: var(--clr6);
+    color: var(--clr4);
     border-radius: 1.25rem;
+    transition: .4s;
 }
 
 /* MAIN-SCREEN */
@@ -31,6 +38,7 @@
     opacity: 0;
     transition: opacity .2s;
     pointer-events: none;
+    
 }
 
 .toggle-menu {
@@ -40,4 +48,34 @@
     height: 35px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.social-links {
+    gap: 5px;
+    margin: 0;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-links img:hover {
+    box-shadow: 0px 0px 7px 4px #33be6d;
+    transition: .2s;
+}
+
+.social-links img {
+    height: 2.2rem;
+    width: 2.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    transition: .4s;
+    border-radius: 2px;
+    text-decoration: none;
+    border-radius: 5px;
 }

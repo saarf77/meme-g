@@ -11,45 +11,54 @@
 </head>
 
 <body onload="onInit()">
-
-
     <div class="main-screen" onclick="toggleMenu()"></div>
     <header class="main-header main-layout flex space-between align-center">
         <div class="logo"></div>
         <nav>
             <ul class="main-nav clean-list flex">
                 <li onclick="onGalleryShow()">Gallery</li>
-                <li class="saved-meme-page">Memes</li>
-                <li onclick="onReplaceSiteToLinkedin()">About</li>
+                <li class="saved-meme-page" onclick="onMemeShow()">Memes</li>
+                <li class="social-links">
+                    <a href="https://www.instagram.com/saarf77/" target="_blank">
+                        <!-- <i class="fa fa-instagram"></i> -->
+                        <img src="img/icons/instagram.png" alt="">
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a href="https://github.com/saarf77" target="_blank">
+                        <!-- <i class="fa fa-github"></i> -->
+                        <img src="img/icons/github (1).png" alt="">
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a href="https://www.linkedin.com/in/saar-fridman/" target="_blank">
+                        <img src="img/icons/linkedin.png" alt="">
+                    </a>
+                </li>
             </ul>
         </nav>
         <button class="toggle-menu" onclick="toggleMenu()">☰</button>
     </header>
-
-
-
     <main class="main-content main-layout">
         <input type="file" class="file-input btn hide-element    flexible-btn" name="image"
             onchange="onImgInput(event)" />
         <section class="filters-container flex">
             <div class="search-keyword-container flex space-between">
                 <datalist id="search-list"></datalist>
-                <input class="search-input" list="search-list" type="text" onkeyup="onKeywordList(this)"
-                    onchange="onSetFilterByKeyword(this)" placeholder="Search">
+                <input class="search-input" list="search-list" type="text" oninput="onSetFilterByKeyword(this)"
+                    placeholder="Search">
                 <div class="img-search"><img class="icon icon-search" src="img/icons/search-icon.png"> </div>
             </div>
 
 
             <div class="filter-keywords flex align-center">
-                <button class="funny" value="funny" onclick="onIncreaseFontSizeAndFilter(this)">Funny</button>
-                <button class="animal" value="animal" onclick="onIncreaseFontSizeAndFilter(this)">Animal</button>
-                <button class="men" value="men" onclick="onIncreaseFontSizeAndFilter(this)">Men</button>
-                <button class="actor" value="actor" onclick="onIncreaseFontSizeAndFilter(this)">Actor</button>
-                <button class="cute" value="cute" onclick="onIncreaseFontSizeAndFilter(this)">Cute</button>
+                <button class="funny" value="funny" onclick="onFontSizeFilter(this)">Funny</button>
+                <button class="men" value="men" onclick="onFontSizeFilter(this)">Men</button>
+                <button class="animal" value="animal" onclick="onFontSizeFilter(this)">Animal</button>
+                <button class="celeb" value="celeb" onclick="onFontSizeFilter(this)">Celeb</button>
+                <button class="cute" value="cute" onclick="onFontSizeFilter(this)">Cute</button>
             </div>
-            <!-- <button class="flexible-btn" onclick="onRandomMeme()">I'm flexible</button> -->
-            <button class="flexible-btn">I'm flexible</button>
-            <button class="more-btn" onclick="onReplaceSiteToGithub()">More</button>
+            <button class="flexible-btn" onclick="onFlexible()">I'm flexible</button>
         </section>
 
         <section class="gallery-container"></section>
@@ -84,52 +93,74 @@
                     <button class="text-move-right btn" onclick="onMoveText('left')"> <img class="icon"
                             src="img/icons/align-to-right.png" /></button>
                     <button class="text-move-up btn" onclick="onMoveTextX(-5)"> <img class="icon"
-                            src="img/icons/arrows-up.png" /></button>
+                            src="img/icons/up-arrow.png" /></button>
                     <button class="text-move-down btn" onclick="onMoveTextX(5)"> <img class="icon"
-                            src="img/icons/arrows-down.png" /></button>
+                            src="img/icons/down-arrow.png" /></button>
+                    <button class="text-move-left btn" onclick="onMoveTextY(-5)"> <img class="icon"
+                            src="img/icons/left-arrow.png" /></button>
+                    <button class="text-move-right btn" onclick="onMoveTextY(5)"> <img class="icon"
+                            src="img/icons/right-arrow.png" /></button>
+                            <button class="font-clr-change btn" onclick="document.querySelector('.fill-color').click()"><input class="fill-color hide-element" type="color" name="font-clr-change" value="#f33f33"
+                                oninput="onChangeColor(this.value)" /> <img class="icon"
+                                src="img/icons/paint-board-and-brush.png" /></button> 
                     <select class="font-type btn" onclick="onChangeFontFamily(this.value)">
                         <option value="Impact">Impact</option>
                         <option value="Arial">Arial</option>
                         <option value="David">David</option>
                     </select>
-                    <button class="font-clr-change btn" onclick="document.querySelector('.fill-color').click()">
-                        <input class="fill-color hide-element" type="color" name="font-clr-change" value="#f33f33"
-                            oninput="onChangeColor(this.value)" /> <img class="icon"
-                            src="img/icons/paint-board-and-brush.png" />
                 </div>
 
                 <div class="clouds-btns flex">
                     <button class="download-btn btn"><a href="#" onclick="downloadCanvas(this)"
-                            download="cool-meme">Download </a><img class="icon" src="img/icons/download.png"
-                            alt=""></button>
+                            download="cool-meme">Download <img class="icon" src="img/icons/download.png"
+                            alt=""> </a></button>
                     <button class="share-btn btn"><a href="https://www.facebook.com/sharer/sharer.php?u=example.org"
                             target="_blank">
-                            Share  <img class="icon" src="img/icons/facebook-logo.png" alt="">
+                            Share <img class="icon" src="img/icons/facebook-logo.png" alt="">
                         </a></button>
-
                     <button class="save-btn btn" onclick="onSaveMeme()">Save</button>
                     <button class="delete-btn btn" onclick="onDeleteMeme()">Delete</button>
-                    <p><button>Share !</button></p>
+                    <button onclick="onShareAll()">Share MDN!</button>
                     <p class="result"></p>
                 </div>
-                <div><button class="flex"><img class="icon" src="img/icons/upload.png" alt="" srcset=""><input type="file"
-                            class="file-input btn" name="image" onchange="onImgInput(event)" /></button>
+
+                <div><button class="flex"><img class="icon" src="img/icons/upload.png" alt="" srcset=""><input
+                            type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /></button>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="main-layout flex content-center">
-        <div class="logo"></div>
+    <footer class="main-footer full flex flex-column align-center justify-center">
+        <small class="footer-rights"> © 2023 Fridman - All Rights Reserved - Find more at <a
+                href="https://saarf77.github.io/Portfolio/" target="_blank">saarf77.io/Portfolio</a></small>
+        <ul class="main-nav clean-list flex">
+            <li class="social-links flex">
+                <a href="https://www.instagram.com/saarf77/" target="_blank">
+                    <!-- <i class="fa fa-instagram"></i> -->
+                    <img src="img/icons/instagram.png" alt="">
+                </a>
+            </li>
+            <li class="social-links flex">
+                <a href="https://github.com/saarf77" target="_blank">
+                    <!-- <i class="fa fa-github"></i> -->
+                    <img src="img/icons/github (1).png" alt="">
+                </a>
+            </li>
+            <li class="social-links flex">
+                <a href="https://www.linkedin.com/in/saar-fridman/" target="_blank">
+                    <img src="img/icons/linkedin.png" alt="">
+                </a>
+            </li>
+        </ul>
     </footer>
 
     <script src="js/services/meme.service.js"></script>
-    <!-- <script src="js/services/galley.service.js"></script> -->
     <script src="js/services/storage.service.js"></script>
-    <script src="js/services/utils.js"></script>
-    <script src="js/controllers/main.controller.js"></script>
+    <!-- <script src="js/services/utils.js"></script> -->
     <script src="js/services/upload.service.js"></script>
-    <!-- <script src="js/controllers/gallery.controller.js"></script> -->
+
+    <script src="js/controllers/main.controller.js"></script>
     <script src="js/controllers/meme.controller.js"></script>
 
 

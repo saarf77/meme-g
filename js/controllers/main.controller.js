@@ -4,7 +4,7 @@ var gCurrImgMeme = null
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gElCanvas
 var gElLeft
-var gElTop 
+var gElTop
 var gCtx
 var gPos
 var gCanvasTop, gCanvasDown, gCanvasMiddle
@@ -15,40 +15,37 @@ var gImgsAfterFilter
 var isMemePage = false
 
 function onInit() {
- 
 
   gElCanvas = document.querySelector('.edit-meme-canvas')
-  gElCanvas.addEventListener('click', function(e) {
+  gElCanvas.addEventListener('click', function (e) {
     getCursorPosition(gElCanvas, e)
-}),
-  gCtx = gElCanvas.getContext('2d')
+  }),
+    gCtx = gElCanvas.getContext('2d')
   initGMeme()
-  if(isMemePage)
-  {
+  if (isMemePage) {
     console.log("hrll")
     document.querySelector(".gallery-container").innerHTML = ''
-    document.querySelector('section[class = "edit-container flex"]').style.display ='none';
+    document.querySelector('section[class = "edit-container flex"]').style.display = 'none';
     document.querySelector(".gallery-container").style.visibility = 'visible'
-    document.querySelector("input").style.display ='none';
-    document.querySelector('section[class = "filters-container flex"]').style.display ='none';
+    document.querySelector("input").style.display = 'none';
+    document.querySelector('section[class = "filters-container flex"]').style.display = 'none';
     renderMemes()
   }
-  else if(gCurrImgMeme !== null)
-  {
+  else if (gCurrImgMeme !== null) {
     document.querySelector(".gallery-container").innerHTML = ''
     document.querySelector('section[class = "edit-container flex"]').style.visibility = 'visible'
-    document.querySelector("input").style.display ='none';
-    document.querySelector('section[class = "filters-container flex"]').style.display ='none';
+    document.querySelector("input").style.display = 'none';
+    document.querySelector('section[class = "filters-container flex"]').style.display = 'none';
     renderMeme(gCurrImgMeme)
   }
-  else{
+  else {
     document.querySelector(".gallery-container").innerHTML = ''
     document.querySelector('section[class = "edit-container flex"]').style.visibility = 'hidden'
     // document.querySelector(".gallery-container").style.display = 'bloack-grid'
     // document.querySelector("input").style.display = 'bloack-grid';
     // document.querySelector('section[class = "filters-container flex"]').style.display = 'bloack-grid';
     // restartCanvasLocations()
-    renderGallery() 
+    renderGallery()
     // var memes = loadFromStorage(STORAGE_KEY)
     // if (memes) gSavedMemes = memes
     // addListeners()
@@ -57,22 +54,20 @@ function onInit() {
 
 }
 
-
-function renderGallery()
-{
+function renderGallery() {
   let elContainer = document.querySelector(".gallery-container")
   for (let i = 1; i <= memeNumber; i++) {
-    if (containStr(gFilterBy, i-1)) {
-    var strName = `img/meme-imgs/${i}.jpg`
-    var elCurrImg = document.createElement("img")
-    elCurrImg.src = strName
-    elCurrImg.id = `meme-imgs/${i}`
-    elCurrImg.addEventListener('click', function () {
+    if (containStr(gFilterBy, i - 1)) {
+      var strName = `img/meme-imgs/${i}.jpg`
+      var elCurrImg = document.createElement("img")
+      elCurrImg.src = strName
+      elCurrImg.id = `meme-imgs/${i}`
+      elCurrImg.addEventListener('click', function () {
         gCurrImgMeme = this.id
         onInit()
-    });
-    elCurrImg.className = "meme-img-select"
-    elContainer.appendChild(elCurrImg)
+      });
+      elCurrImg.className = "meme-img-select"
+      elContainer.appendChild(elCurrImg)
     }
   }
 }
@@ -86,17 +81,16 @@ function resizeCanvas() {
   gElCanvas.height = elContainer.offsetHeight
 }
 
-
-function addListeners() {
-  addMouseListeners()
-  addTouchListeners()
-  window.addEventListener('resize', () => {
-    resizeCanvas()
-    const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-    createCircle(center)
-    renderCanvas()
-  })
-}
+// function addListeners() {
+//   addMouseListeners()
+//   addTouchListeners()
+//   window.addEventListener('resize', () => {
+//     resizeCanvas()
+//     const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+//     createCircle(center)
+//     renderCanvas()
+//   })
+// }
 
 function addMouseListeners() {
   gElCanvas.addEventListener('mousemove', onMove)
@@ -136,19 +130,7 @@ function onUp() {
   document.body.style.cursor = 'grab'
 }
 
-
-function onReplaceSiteToLinkedin() {
-  toggleMenu()
-  window.open("https://www.linkedin.com/in/saar-fridman/",
-    "_blank")
-}
-
-function onReplaceSiteToGithub() {
-  window.open("https://github.com/saarf77",
-    "_blank")
-}
-function onAddLine()
-{
+function onAddLine() {
   addLine(gCurrImgMeme)
 }
 function getCursorPosition(canvas, event) {
@@ -156,28 +138,21 @@ function getCursorPosition(canvas, event) {
   const x = event.clientX - rect.left
   const y = event.clientY - rect.top
   // console.log("x: " + x + " y: " + y)
-  isLineClicked({x:x,y:y})
+  isLineClicked({ x: x, y: y })
 
 }
-
 
 function onDeleteLine() {
   deleteLine(gCurrImgMeme)
 }
 
-
 function onChangeColor(val) {
-
   onSelectFillColor(val, gCurrImgMeme)
 }
 
-
-
-function onSetLineText(event)
-{
-  setMemeText(event.value,gCurrImgMeme)
+function onSetLineText(event) {
+  setMemeText(event.value, gCurrImgMeme)
 }
-
 
 function onMoveText(direction) {
   moveText(direction, gCurrImgMeme)
@@ -192,49 +167,42 @@ function onChangeFontSize(val) {
 }
 
 function onGalleryShow() {
-location.reload()
+  location.reload()
 }
 
 function onSaveMeme() {
   saveMemes()
 }
 
-
-function renderMemes()
-{
+function renderMemes() {
   let elContainer = document.querySelector(".gallery-container")
   var allSaveImg = loadFromStorage(ALL_MEMES)
-  if(allSaveImg !== null)
-  {
-  for(let currImg of allSaveImg)
-  {
-  
-    var elCurrImg = document.createElement("img")
-    elCurrImg.src = currImg;
-    elCurrImg.className = "meme-img-select"
-    elCurrImg.addEventListener('click',function(event)
-    {
-      var a1 = document.createElement("a")
-      // const urlCreator = window.URL 
-      // imageData = urlCreator.createObjectURL(this.data);
-      a1.setAttribute("href",event.target.src);
-      a1.setAttribute("download", "imgMeme.jpg");
-      document.body.appendChild(a1);
-      a1.click();
-      a1.remove()
-    })
-    elContainer.appendChild(elCurrImg)
+  if (allSaveImg !== null) {
+    for (let currImg of allSaveImg) {
+
+      var elCurrImg = document.createElement("img")
+      elCurrImg.src = currImg;
+      elCurrImg.className = "meme-img-select"
+      elCurrImg.addEventListener('click', function (event) {
+        var a1 = document.createElement("a")
+        // const urlCreator = window.URL 
+        // imageData = urlCreator.createObjectURL(this.data);
+        a1.setAttribute("href", event.target.src);
+        a1.setAttribute("download", "imgMeme.jpg");
+        document.body.appendChild(a1);
+        a1.click();
+        a1.remove()
+      })
+      elContainer.appendChild(elCurrImg)
+    }
   }
 }
-}
-
 
 function onMemeShow() {
   gCurrImgMeme = null
   isMemePage = true
   onInit()
 }
-
 
 function onMoveTextX(move) {
   moveTextX(move, gCurrImgMeme)
@@ -250,28 +218,25 @@ function onFlexible() {
   onInit()
 }
 
-
 function onSetFilterByKeyword(event) {
   gFilterBy = event.value
   onInit()
 }
 
-function containStr(str, i) { 
-for (let currDes of gImgs[i].keywords)
-{
-if (currDes.includes(str)) {
-  return true
-}
-}
+function containStr(str, i) {
+  for (let currDes of gImgs[i].keywords) {
+    if (currDes.includes(str)) {
+      return true
+    }
+  }
   return false
 }
 
-function onIncreaseFontSizeAndFilter(event) {
+function onFontSizeFilter(event) {
   gFilterBy = event.innerHTML.toLowerCase()
   onInit()
 }
 
-function onShareAll()
- {
+function onShareAll() {
   shareAll()
- }
+}

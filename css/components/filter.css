@@ -4,7 +4,7 @@
     justify-content: space-between;
     box-shadow: 0 3px 6px 1px #33be6de8;
     border-radius: 25px;
-    background-color: gray;
+    background-image:  linear-gradient(90deg, #fb8500 0%, #0c98b9,#33be6de8 90%);
     width: 450px;
     height: 100px;
     margin-bottom: 2rem;
@@ -13,24 +13,23 @@
     margin-right: 5px;
     padding-left: 5px;
     padding-right: 5px;
-    /* color: var(--clr1); */
 }
 
 
 .filter-keywords button {
     font-family: dyna;
     color: aliceblue;
-    border-radius: 20px;
+    border-radius: 10px;
     margin: 0;
     cursor: pointer;
     padding: 1px;
     background-color: gray;
     border-style: none;
-    transition: background-color .2s 
+    transition: background-color .4s 
 }
 
 .filter-keywords button:hover {
-    background-color: #33be6d;
+    background-color: rgb(59, 59, 59);
 }
 
 .filter-keywords .funny {
@@ -38,19 +37,19 @@
 }
 
 .filter-keywords .animal {
-    font-size: 16px;
-}
-
-.filter-keywords .men {
     font-size: 28px;
 }
 
-.filter-keywords .actor {
-    font-size: 12px;
+.filter-keywords .men {
+    font-size: 18px;
+}
+
+.filter-keywords .celeb {
+    font-size: 16px;
 }
 
 .filter-keywords .cute {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 
@@ -81,29 +80,6 @@
     color: var(--clr1);
 }
 
-
-
-
-.filters-container .more-btn {
-    cursor: pointer;
-    width: 5.5rem;
-    height: 2.25rem;
-    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
-    color: var(--clr1);
-    border-radius: 18px;
-    border: none;
-    margin: 15px;
-    font-size: 1.2rem;
-    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
-    transition: box-shadow .1s;
-}
-
-.filters-container .more-btn:hover{
-    box-shadow: -4px -5px 17px 4px #bac6d7ad;
-
-}
-
-
 .emogy-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15px, 1fr));
@@ -119,6 +95,7 @@
     gap: 10px;
 }
 
+
 .clouds-btns .btn {
     flex-basis: 33.3%;
     margin: 5px auto;
@@ -133,7 +110,6 @@
 .clouds-btns .download-btn {
     box-shadow: 1px 6px 0 #632687, inset 0 5px 0 #e184e4;
     background-color: #8f44bb;
-
 }
 
 .clouds-btns .share-btn {
@@ -143,7 +119,7 @@
 }
 
 .clouds-btns .save-btn{
-    box-shadow: 1px 6px 0 #3f7030, inset 0 5px 0 #51a05c;
+    box-shadow: 1px 6px 0 #3f7030, inset 0 15px 0 #51a05c;
     background-color: #55a763;
     text-decoration: none;
 }
@@ -152,8 +128,7 @@
     box-shadow: 1px 5px 0 #8c0606, inset 0 2px 0 rgba(185, 66, 66, 0.58);
     background-image: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
     text-decoration: none;
-    display: none;
-
+    display: none
 }
 
 .clouds-btns a:link {

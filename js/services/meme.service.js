@@ -1,17 +1,17 @@
 // function renderSavedMemes() {
 //     var savedMems = gSavedMemes
-  
+
 //     const savedHTML = savedMems.map(mem =>
 //       `<div class="img-container" onClick="onImageSelect(${mem['url'].id})">
 //       <img class="gallery-img" src="${mem['url'].url}">
 //       </div>`
 //     )
-  
+
 //     showGallery()
 //     document.querySelector('.delete-btn').style.display = 'block'
 //     document.querySelector('.gallery-container').innerHTML = savedHTML.join('')
 // }
-  
+
 // function markLine(line) {
 //   if (!line) return
 //   const lineWidth = gCtx.measureText(line.txt).width + line.size
@@ -105,12 +105,12 @@ let gImgs = [
   {
     id: 14,
     url: `images/14.jpg`,
-    keywords: ['men', 'animal' ],
+    keywords: ['men', 'animal'],
   },
   {
     id: 15,
     url: `images/15.jpg`,
-    keywords: ['men', 'celebrity', 'animal'],
+    keywords: ['men', 'celebrity', 'stark'],
   },
   {
     id: 16,

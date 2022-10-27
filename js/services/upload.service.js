@@ -29,7 +29,6 @@ function renderMyMeme() {
 
   function onImgInput(ev) {
     loadImageFromInput(ev, renderImg)
-
   }
 
   function renderImg(img) {

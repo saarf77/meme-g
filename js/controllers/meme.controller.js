@@ -36,7 +36,6 @@ function initGMeme() {
   }
 }
 
-
 function getGMeme() {
   return gMeme
 }
@@ -51,12 +50,9 @@ function renderMeme(imgId) {
 
     gCurrMeme.lines.forEach((line) => {
       renderLine(line)
-
     })
   }
 }
-
-
 
 function renderLine(line) {
   gCtx.beginPath()
@@ -86,8 +82,6 @@ function addLine(imgId) {
   }
   gMeme.lines.push(currLine)
   renderMeme(imgId)
-
-
 }
 
 function isLineClicked(clickedPos) {
@@ -116,48 +110,39 @@ function isLineClicked(clickedPos) {
   }
 }
 
-
 function deleteLine(imgId) {
   var currIndex = gMeme.selectedLineIdx
   gMeme.lines.splice(currIndex, 1)
   gMeme.selectedLineIdx = -1
   renderMeme(imgId)
-
 }
-
-
 
 function onSelectFillColor(val, imgId) {
   var currIndex = gMeme.selectedLineIdx
 
-  gMeme.lines[currIndex].fillColor = val 
+  gMeme.lines[currIndex].fillColor = val
   gMeme.lines[currIndex].strokeColor = val
   renderMeme(imgId)
 }
 
-
-
-function setMemeText(val,imgId)
-{
-  var curIndex =gMeme.selectedLineIdx
-  if(curIndex !==-1){
-  gMeme.lines[curIndex].txt = val
+function setMemeText(val, imgId) {
+  var curIndex = gMeme.selectedLineIdx
+  if (curIndex !== -1) {
+    gMeme.lines[curIndex].txt = val
   }
   renderMeme(imgId)
 }
 
-
-function moveText(direction,imgId)
-{
-  var curIndex =gMeme.selectedLineIdx
-  if(curIndex !==-1){
+function moveText(direction, imgId) {
+  var curIndex = gMeme.selectedLineIdx
+  if (curIndex !== -1) {
     switch (direction) {
       case 'right':
         gMeme.lines[curIndex].align = 'end'
         break;
       case 'center':
         gMeme.lines[curIndex].align = 'center'
-        break;      
+        break;
       case 'left':
         gMeme.lines[curIndex].align = 'start'
         break;
@@ -169,44 +154,38 @@ function moveText(direction,imgId)
 }
 
 function changeFontFamily(font, imgId) {
-  var currIndex =gMeme.selectedLineIdx
-  if(currIndex !==-1){
-  gMeme.lines[currIndex].fontfamily = font.toLowerCase()
+  var currIndex = gMeme.selectedLineIdx
+  if (currIndex !== -1) {
+    gMeme.lines[currIndex].fontfamily = font.toLowerCase()
   }
   renderMeme(imgId)
 }
 
-function changeFontSize(val,imgId){
-  var currIndex =gMeme.selectedLineIdx
-  if(currIndex !==-1){
+function changeFontSize(val, imgId) {
+  var currIndex = gMeme.selectedLineIdx
+  if (currIndex !== -1) {
 
-    if(gMeme.lines[currIndex].size + val >8 && gMeme.lines[currIndex].size + val < 80)
-    {
-      gMeme.lines[currIndex].size += val 
+    if (gMeme.lines[currIndex].size + val > 8 && gMeme.lines[currIndex].size + val < 80) {
+      gMeme.lines[currIndex].size += val
     }
   }
   renderMeme(imgId)
 }
 
-
-function saveMemes()
- {
- var curImgData = getImage();
- var allSaveImg = loadFromStorage(ALL_MEMES)
-   if(allSaveImg === null)
-     {
-      allSaveImg = []
-     }
-      allSaveImg.push(curImgData)
-      saveToStorage(ALL_MEMES,allSaveImg)
- }
+function saveMemes() {
+  var curImgData = getImage();
+  var allSaveImg = loadFromStorage(ALL_MEMES)
+  if (allSaveImg === null) {
+    allSaveImg = []
+  }
+  allSaveImg.push(curImgData)
+  saveToStorage(ALL_MEMES, allSaveImg)
+}
 
 function getImage() {
   var dataURL = gElCanvas.toDataURL("image/png");
-
   return dataURL
 }
-
 
 function onSwitchLine() {
   const elEditLine = document.querySelector('[name="text"]')
@@ -234,32 +213,28 @@ function getLine() {
 }
 
 function moveTextX(move, imgId) {
-  var currIndex =gMeme.selectedLineIdx
-  if(currIndex !==-1){
+  var currIndex = gMeme.selectedLineIdx
+  if (currIndex !== -1) {
 
-    if(gMeme.lines[currIndex].pos.y + move > 30 && gMeme.lines[currIndex].pos.y + move < 495)
-    {
-      gMeme.lines[currIndex].pos.y += move 
+    if (gMeme.lines[currIndex].pos.y + move > 30 && gMeme.lines[currIndex].pos.y + move < 495) {
+      gMeme.lines[currIndex].pos.y += move
     }
   }
-  renderMeme(imgId)  
+  renderMeme(imgId)
 }
 
 function moveTextY(move, imgId) {
-  var currIndex =gMeme.selectedLineIdx
-  if(currIndex !==-1){
+  var currIndex = gMeme.selectedLineIdx
+  if (currIndex !== -1) {
 
-    if(gMeme.lines[currIndex].pos.x + move > 45 && gMeme.lines[currIndex].pos.x + move < 470)
-    {
-      gMeme.lines[currIndex].pos.x += move 
+    if (gMeme.lines[currIndex].pos.x + move > 45 && gMeme.lines[currIndex].pos.x + move < 470) {
+      gMeme.lines[currIndex].pos.x += move
     }
   }
-  renderMeme(imgId)  
+  renderMeme(imgId)
 }
 
-
-function shareAll()
-{
+function shareAll() {
   console.log(gElCanvas.toDataURL())
   const shareData = {
     title: 'MDN',
@@ -267,8 +242,8 @@ function shareAll()
     url: gElCanvas.toDataURL('image/jpg', 1.0)
   }
   try {
-     navigator.share(shareData)
+    navigator.share(shareData)
   } catch (err) {
-   console.log(err)
+    console.log(err)
   }
 }

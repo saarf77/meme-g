@@ -24,13 +24,24 @@
     margin: 5px;
     padding: 1px;
     font-size: 1rem;
-    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
-    transition: box-shadow .1s;
+    background-image: linear-gradient(90deg,#33be6d 0%, #0c98b9 100%);
+    transition: box-shadow .2s;
 }
 
-
-
 .filters-container .flexible-btn:hover{
-    box-shadow: -4px -5px 17px 4px #bac6d7ad;
+    box-shadow: -4px -5px 17px 4px #b5838d;
 
+}
+
+.meme-img-select{
+    width: 95%;
+    height: 95%;
+    border-radius: 15px;
+    
+}
+
+.meme-img-select:hover{
+    box-shadow: -4px -5px 17px 4px #18e409ad;
+    cursor: pointer;
+    transition: .2s;
 }
