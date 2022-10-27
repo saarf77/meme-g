@@ -4,7 +4,7 @@ const ALL_MEMES = "ALL_MEMES"
 function initGMeme() {
   gMeme = {
     selectedImgId: 1,
-    selectedLineIdx: 0,
+    selectedLineIdx: -1,
     lines: [
       {
         pos: {
@@ -14,7 +14,7 @@ function initGMeme() {
         txt: 'Sample text up',
         size: 40,
         align: 'center',
-        fillColor: 'rgb(0, 0, 0)',
+        fillColor: 'white',
         strokeColor: 'black',
         isSelected: false,
         fontfamily: 'impact',
@@ -27,7 +27,7 @@ function initGMeme() {
         txt: 'Sample text down',
         size: 40,
         align: 'center',
-        fillColor: 'rgb(0, 0, 0)',
+        fillColor: 'white',
         strokeColor: 'black',
         isSelected: false,
         fontfamily: 'impact',
@@ -51,6 +51,7 @@ function renderMeme(imgId) {
 
     gCurrMeme.lines.forEach((line) => {
       renderLine(line)
+
     })
   }
 }
@@ -78,13 +79,14 @@ function addLine(imgId) {
     txt: 'Sample text up',
     size: 40,
     align: 'center',
-    fillColor: 'rgb(0, 0, 0)',
+    fillColor: 'white',
     strokeColor: 'black',
     isSelected: false,
     fontfamily: 'impact',
   }
   gMeme.lines.push(currLine)
   renderMeme(imgId)
+
 
 }
 
@@ -110,6 +112,7 @@ function isLineClicked(clickedPos) {
     gMeme.selectedLineIdx = selectedLine
     gMeme.lines[selectedLine].isSelected = true
     document.querySelector("input[class='meme-text-input'").value = gMeme.lines[selectedLine].txt
+    // markLine(gMeme.lines[selectedLine])
   }
 }
 
@@ -188,7 +191,7 @@ function changeFontSize(val,imgId){
 
 function saveMemes()
  {
- var curImgData = getBase64Image();
+ var curImgData = getImage();
  var allSaveImg = loadFromStorage(ALL_MEMES)
    if(allSaveImg === null)
      {
@@ -198,8 +201,74 @@ function saveMemes()
       saveToStorage(ALL_MEMES,allSaveImg)
  }
 
-function getBase64Image() {
+function getImage() {
   var dataURL = gElCanvas.toDataURL("image/png");
 
-  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  return dataURL
+}
+
+
+function onSwitchLine() {
+  const elEditLine = document.querySelector('[name="text"]')
+  nextLine()
+  elEditLine.value = getLine()
+  renderMeme()
+}
+
+function nextLine() {
+  if (!getLines().length) return
+  const oldLine = getLine()
+  if (oldLine) oldLine.isSelected = false
+  let currIdx = gMeme.selectedLineIdx
+  gMeme.selectedLineIdx = (currIdx < gMeme.lines.length - 1) ? ++currIdx : 0
+  const newLine = getLine()
+  newLine.isSelected = true
+}
+
+function getLines() {
+  return gMeme.lines
+}
+
+function getLine() {
+  return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function moveTextX(move, imgId) {
+  var currIndex =gMeme.selectedLineIdx
+  if(currIndex !==-1){
+
+    if(gMeme.lines[currIndex].pos.y + move > 30 && gMeme.lines[currIndex].pos.y + move < 495)
+    {
+      gMeme.lines[currIndex].pos.y += move 
+    }
+  }
+  renderMeme(imgId)  
+}
+
+function moveTextY(move, imgId) {
+  var currIndex =gMeme.selectedLineIdx
+  if(currIndex !==-1){
+
+    if(gMeme.lines[currIndex].pos.x + move > 45 && gMeme.lines[currIndex].pos.x + move < 470)
+    {
+      gMeme.lines[currIndex].pos.x += move 
+    }
+  }
+  renderMeme(imgId)  
+}
+
+
+function shareAll()
+{
+  console.log(gElCanvas.toDataURL())
+  const shareData = {
+    title: 'MDN',
+    text: 'Learn web development on MDN!',
+    url: gElCanvas.toDataURL('image/jpg', 1.0)
+  }
+  try {
+     navigator.share(shareData)
+  } catch (err) {
+   console.log(err)
+  }
 }

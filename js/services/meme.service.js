@@ -1,41 +1,130 @@
-function renderSavedMemes() {
-    var savedMems = gSavedMemes
+// function renderSavedMemes() {
+//     var savedMems = gSavedMemes
   
-    const savedHTML = savedMems.map(mem =>
-      `<div class="img-container" onClick="onImageSelect(${mem['url'].id})">
-      <img class="gallery-img" src="${mem['url'].url}">
-      </div>`
-    )
+//     const savedHTML = savedMems.map(mem =>
+//       `<div class="img-container" onClick="onImageSelect(${mem['url'].id})">
+//       <img class="gallery-img" src="${mem['url'].url}">
+//       </div>`
+//     )
   
-    showGallery()
-    document.querySelector('.delete-btn').style.display = 'block'
-    document.querySelector('.gallery-container').innerHTML = savedHTML.join('')
-}
+//     showGallery()
+//     document.querySelector('.delete-btn').style.display = 'block'
+//     document.querySelector('.gallery-container').innerHTML = savedHTML.join('')
+// }
   
+// function markLine(line) {
+//   if (!line) return
+//   const lineWidth = gCtx.measureText(line.txt).width + line.size
+//   const lineHeight = line.size + 20
+//   gCtx.strokeStyle = 'yellow'
+//   gCtx.strokeRect(
+//     line.pos.x - lineWidth / 2 - 10,
+//     line.pos.y - lineHeight / 2,
+//     lineWidth + 20,
+//     lineHeight
+//   )
+// }
 
 
-function markLine(line) {
-  if (!line) return
-  const lineWidth = gCtx.measureText(line.txt).width + line.size
-  const lineHeight = line.size + 30
-  gCtx.strokeStyle = 'yellow'
-  gCtx.strokeRect(
-    line.pos.x - lineWidth / 2 - 10,
-    line.pos.y - lineHeight / 2,
-    lineWidth + 20,
-    lineHeight
-  )
+let gFilterBy = ''
+
+let gKeywordSearchCountMap = {
+  funny: 12,
+  cute: 7,
+  celebrity: 9,
+  animal: 6,
+  men: 4,
+  kids: 10,
 }
-
-
-function createLine({ txt =  'Enter text...', size = 28, align = 'center', color = 'blue', strokeStyle = 'black', font = 'Impact' , pos = { x: 200, y: 50 } }) {
-  return {
-    txt,
-    size,
-    align,
-    color,
-    strokeStyle,
-    font,
-    pos,
-  }
-}
+let gImgs = [
+  {
+    id: 1,
+    url: `images/1.jpg`,
+    keywords: ['funny', 'men', 'celebrity'],
+  },
+  {
+    id: 2,
+    url: `images/2.jpg`,
+    keywords: ['animal', 'cute'],
+  },
+  {
+    id: 3,
+    url: `images/3.jpg`,
+    keywords: ['cute', 'animal', 'kids'],
+  },
+  {
+    id: 4,
+    url: `images/4.jpg`,
+    keywords: ['cat', 'cute', 'animal'],
+  },
+  {
+    id: 5,
+    url: `images/5.jpg`,
+    keywords: ['kids', 'cute', 'funny'],
+  },
+  {
+    id: 6,
+    url: `images/6.jpg`,
+    keywords: ['funny', 'men', 'celebrity'],
+  },
+  {
+    id: 7,
+    url: `images/7.jpg`,
+    keywords: ['funny', 'kids', 'cute'],
+  },
+  {
+    id: 8,
+    url: `images/8.jpg`,
+    keywords: ['funny', 'men', 'celebrity'],
+  },
+  {
+    id: 9,
+    url: `images/9.jpg`,
+    keywords: ['funny', 'kids', 'cute'],
+  },
+  {
+    id: 10,
+    url: `images/10.jpg`,
+    keywords: ['funny', 'men', 'celebrity'],
+  },
+  {
+    id: 11,
+    url: `images/11.jpg`,
+    keywords: ['men', 'animal'],
+  },
+  {
+    id: 12,
+    url: `images/12.jpg`,
+    keywords: ['funny', 'men', 'celebrity'],
+  },
+  {
+    id: 13,
+    url: `images/13.jpg`,
+    keywords: ['men', 'animal'],
+  },
+  {
+    id: 14,
+    url: `images/14.jpg`,
+    keywords: ['men', 'animal' ],
+  },
+  {
+    id: 15,
+    url: `images/15.jpg`,
+    keywords: ['men', 'celebrity', 'animal'],
+  },
+  {
+    id: 16,
+    url: `images/16.jpg`,
+    keywords: ['funny', 'men', 'celebrity'],
+  },
+  {
+    id: 17,
+    url: `images/17.jpg`,
+    keywords: ['men', 'celebrity'],
+  },
+  {
+    id: 18,
+    url: `images/18.jpg`,
+    keywords: ['funny', 'men'],
+  },
+]

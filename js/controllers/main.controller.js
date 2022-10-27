@@ -18,37 +18,35 @@ function onInit() {
  
 
   gElCanvas = document.querySelector('.edit-meme-canvas')
-  var memeBtn = document.querySelector("li[class='saved-meme-page']")
   gElCanvas.addEventListener('click', function(e) {
     getCursorPosition(gElCanvas, e)
-}),
-memeBtn.addEventListener('mousedown', function(e) {
-  isMemePage = true
-  onInit()
 }),
   gCtx = gElCanvas.getContext('2d')
   initGMeme()
   if(isMemePage)
   {
-    document.querySelector('section[class = "edit-container flex"]').style.display = 'none'
-    document.querySelector(".gallery-container").style.display = 'compact'
-    document.querySelector("input").style.display = 'compact';
-    document.querySelector('section[class = "filters-container flex"]').style.display = 'compact';
+    console.log("hrll")
+    document.querySelector(".gallery-container").innerHTML = ''
+    document.querySelector('section[class = "edit-container flex"]').style.display ='none';
+    document.querySelector(".gallery-container").style.visibility = 'visible'
+    document.querySelector("input").style.display ='none';
+    document.querySelector('section[class = "filters-container flex"]').style.display ='none';
     renderMemes()
   }
   else if(gCurrImgMeme !== null)
   {
-    document.querySelector('section[class = "edit-container flex"]').style.display = 'flex'
-    document.querySelector(".gallery-container").style.display = 'none'
-    document.querySelector("input").style.display = 'none';
-    document.querySelector('section[class = "filters-container flex"]').style.display = 'none';
+    document.querySelector(".gallery-container").innerHTML = ''
+    document.querySelector('section[class = "edit-container flex"]').style.visibility = 'visible'
+    document.querySelector("input").style.display ='none';
+    document.querySelector('section[class = "filters-container flex"]').style.display ='none';
     renderMeme(gCurrImgMeme)
   }
   else{
-    document.querySelector('section[class = "edit-container flex"]').style.display = 'none'
-    document.querySelector(".gallery-container").style.display = 'compact'
-    document.querySelector("input").style.display = 'compact';
-    document.querySelector('section[class = "filters-container flex"]').style.display = 'compact';
+    document.querySelector(".gallery-container").innerHTML = ''
+    document.querySelector('section[class = "edit-container flex"]').style.visibility = 'hidden'
+    // document.querySelector(".gallery-container").style.display = 'bloack-grid'
+    // document.querySelector("input").style.display = 'bloack-grid';
+    // document.querySelector('section[class = "filters-container flex"]').style.display = 'bloack-grid';
     // restartCanvasLocations()
     renderGallery() 
     // var memes = loadFromStorage(STORAGE_KEY)
@@ -64,6 +62,7 @@ function renderGallery()
 {
   let elContainer = document.querySelector(".gallery-container")
   for (let i = 1; i <= memeNumber; i++) {
+    if (containStr(gFilterBy, i-1)) {
     var strName = `img/meme-imgs/${i}.jpg`
     var elCurrImg = document.createElement("img")
     elCurrImg.src = strName
@@ -74,7 +73,7 @@ function renderGallery()
     });
     elCurrImg.className = "meme-img-select"
     elContainer.appendChild(elCurrImg)
-
+    }
   }
 }
 function toggleMenu() {
@@ -211,13 +210,68 @@ function renderMemes()
   {
   
     var elCurrImg = document.createElement("img")
-    elCurrImg.src = "data:image/png;base64," + currImg;
+    elCurrImg.src = currImg;
     elCurrImg.className = "meme-img-select"
+    elCurrImg.addEventListener('click',function(event)
+    {
+      var a1 = document.createElement("a")
+      // const urlCreator = window.URL 
+      // imageData = urlCreator.createObjectURL(this.data);
+      a1.setAttribute("href",event.target.src);
+      a1.setAttribute("download", "imgMeme.jpg");
+      document.body.appendChild(a1);
+      a1.click();
+      a1.remove()
+    })
     elContainer.appendChild(elCurrImg)
   }
 }
 }
 
 
+function onMemeShow() {
+  gCurrImgMeme = null
+  isMemePage = true
+  onInit()
+}
 
 
+function onMoveTextX(move) {
+  moveTextX(move, gCurrImgMeme)
+}
+
+function onMoveTextY(move) {
+  moveTextY(move, gCurrImgMeme)
+}
+
+function onFlexible() {
+  var randNum = Math.floor(Math.random() * memeNumber)
+  gCurrImgMeme = `meme-imgs/${randNum}`
+  onInit()
+}
+
+
+function onSetFilterByKeyword(event) {
+  gFilterBy = event.value
+  onInit()
+}
+
+function containStr(str, i) { 
+for (let currDes of gImgs[i].keywords)
+{
+if (currDes.includes(str)) {
+  return true
+}
+}
+  return false
+}
+
+function onIncreaseFontSizeAndFilter(event) {
+  gFilterBy = event.innerHTML.toLowerCase()
+  onInit()
+}
+
+function onShareAll()
+ {
+  shareAll()
+ }

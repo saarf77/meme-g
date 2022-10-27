@@ -7,25 +7,6 @@ function downloadCanvas(elLink) {
     elLink.download = 'my-image.jpg'
 }
 
-// function onImgInput(ev) {
-//     loadImageFromInput(ev)
-//     // hideGallery()
-// }
-
-// function loadImageFromInput(ev) {
-//     document.querySelector('.edit-meme-canvas').innerHTML = ''
-//     var reader = new FileReader()
-//     reader.onload = (event) => {
-//         var img = new Image()
-//         img.src = event.target.result
-//         img = {id: gId, url: img.src , keywords: ['funny'], myMeme: true}
-//         gImgs.push(img)
-//         gId++
-//         renderGallery()
-//     }
-//     reader.readAsDataURL(ev.target.files[0])
-// }
-
 function setMyUploadImg(imgId) {
     gMeme = createMeme({ selectedImgId: imgId })
     renderMyMeme()
@@ -72,22 +53,25 @@ function renderMyMeme() {
   }
 
 
+// function shareAll() {
+  
+//   const shareData = {
+//     title: 'MDN',
+//     text: 'Learn web development on MDN!',
+//     url: 'https://developer.mozilla.org'
+//   }
+  
+//   const btn = document.querySelector('button');
+//   const resultPara = document.querySelector('.result');
+  
+//   // Share must be triggered by "user activation"
+//   btn.addEventListener('click', async () => {
+//     try {
+//       await navigator.share(shareData)
+//       resultPara.textContent = 'MDN shared successfully'
+//     } catch (err) {
+//       resultPara.textContent = `Error: ${err}`
+//     }
+//   });
+// }
 
-  const shareData = {
-    title: 'MDN',
-    text: 'Learn web development on MDN!',
-    url: 'https://google.com'
-  }
-  
-  const btn = document.querySelector('button');
-  const resultPara = document.querySelector('.result');
-  
-  // Share must be triggered by "user activation"
-  btn.addEventListener('click', async () => {
-    try {
-      await navigator.share(shareData)
-      resultPara.textContent = 'MDN shared successfully'
-    } catch (err) {
-      resultPara.textContent = `Error: ${err}`
-    }
-  });
