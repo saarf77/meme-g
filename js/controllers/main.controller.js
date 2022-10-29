@@ -1,5 +1,5 @@
 'use strict'
-const memeNumber = 18
+const memeNumber = 22
 var gCurrImgMeme = null
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gElCanvas

@@ -3,8 +3,8 @@ let gFilterBy = ''
 let gKeywordSearchCountMap = {
   funny: 11,
   cute: 6,
-  celebrity: 9,
-  animal: 6,
+  celebrity: 11,
+  animal: 7,
   men: 14,
   kids: 4,
   women: 2,
@@ -13,7 +13,7 @@ let gImgs = [
   {
     id: 1,
     url: `images/1.jpg`,
-    keywords: ['funny', 'men', 'celebrity'],
+    keywords: ['funny', 'celebrity'],
   },
   {
     id: 2,
@@ -109,6 +109,16 @@ let gImgs = [
     id: 20,
     url: `images/20.jpg`,
     keywords: ['celebrity', 'women'],
+  },
+  {
+    id: 21,
+    url: `images/21.jpg`,
+    keywords: ['celebrity'],
+  },
+  {
+    id: 22,
+    url: `images/22.jpg`,
+    keywords: ['celebrity','men'],
   },
 ]
 
