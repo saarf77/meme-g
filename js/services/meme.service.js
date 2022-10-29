@@ -1,12 +1,13 @@
 let gFilterBy = ''
 
 let gKeywordSearchCountMap = {
-  funny: 12,
-  cute: 7,
+  funny: 11,
+  cute: 6,
   celebrity: 9,
   animal: 6,
-  men: 4,
-  kids: 10,
+  men: 14,
+  kids: 4,
+  women: 2,
 }
 let gImgs = [
   {
@@ -98,6 +99,16 @@ let gImgs = [
     id: 18,
     url: `images/18.jpg`,
     keywords: ['funny', 'men'],
+  },
+  {
+    id: 19,
+    url: `images/19.jpg`,
+    keywords: ['funny', 'women'],
+  },
+  {
+    id: 20,
+    url: `images/20.jpg`,
+    keywords: ['celebrity', 'women'],
   },
 ]
 

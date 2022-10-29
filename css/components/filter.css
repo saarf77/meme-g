@@ -37,19 +37,22 @@
 }
 
 .filter-keywords .animal {
-    font-size: 28px;
+    font-size: 14px;
 }
 
 .filter-keywords .men {
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .filter-keywords .celeb {
-    font-size: 16px;
+    font-size: 18px;
 }
 
-.filter-keywords .cute {
-    font-size: 20px;
+/* .filter-keywords .cute {
+    font-size: 14px;
+} */
+.filter-keywords .women {
+    font-size: 12px;
 }
 
 
