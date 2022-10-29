@@ -12,12 +12,24 @@
 
 
 .logo {
-    background: url("../../img/logo/LOGO.png");
+    /* background: url("../../img/logo/LOGO.png");
     background-position:  center;
     background-size: cover;
     width: 15rem;
     height: 2.7rem;
-    margin-top: .1em;
+    margin-top: .1em; */
+    margin-bottom: .1rem;
+    margin-top: .1rem;
+    border-radius: 6px;
+    font-family: Lato, sans-serif;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-style: normal;
+    text-align: left;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
 }
 
 .main-header .main-nav li:hover {

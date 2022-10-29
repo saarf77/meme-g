@@ -81,16 +81,17 @@ function resizeCanvas() {
   gElCanvas.height = elContainer.offsetHeight
 }
 
-// function addListeners() {
-//   addMouseListeners()
-//   addTouchListeners()
-//   window.addEventListener('resize', () => {
-//     resizeCanvas()
-//     const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-//     createCircle(center)
-//     renderCanvas()
-//   })
-// }
+
+function addListeners() {
+  addMouseListeners()
+  addTouchListeners()
+  window.addEventListener('resize', () => {
+    resizeCanvas()
+    const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+    createCircle(center)
+    renderCanvas()
+  })
+}
 
 function addMouseListeners() {
   gElCanvas.addEventListener('mousemove', onMove)
@@ -237,6 +238,3 @@ function onFontSizeFilter(event) {
   onInit()
 }
 
-function onShareAll() {
-  shareAll()
-}
