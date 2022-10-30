@@ -3,7 +3,10 @@
     html {
         font-size: 14px;
     }
-
+    .edit-meme-canvas{
+        height: 380px;
+        width: 380px;
+    }
     .gallery-img {
         width: 170px;
         cursor: pointer;
@@ -131,7 +134,7 @@
         display: none;
     }
 
-    .social-links{
+    .main-nav .social-links{
         display: none;
     }
 }
@@ -142,13 +145,14 @@
 
     .main-layout {
         max-width: var(--large);
+        max-height: 1900px;
     }
 
     html {
         font-size: 1rem;
     }
     
-    .social-links{
-        display: flex;
-    }
+    /* .main-nav + .social-links{
+        display: none;
+    } */
 }

@@ -4,7 +4,6 @@
     border-radius: 20px;
 }
 
-
 .edit-container {
     /* display: none; */
     justify-content: space-around;
@@ -13,14 +12,18 @@
 .edited-meme {
     border-radius: 20px;
     background-color: #ebeef311;
-    margin-bottom: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #19a59f ;
 }
 
 .editing-features {
-    width: 440px;
+    width: 400px;
     border-radius: 30px;
     background-color: #ebeef312;
     padding: 10px;
+    border: 1px solid #19a59f;
+    margin-bottom: 20px;
 }
 
 .editing-features .meme-text-input {
@@ -61,11 +64,22 @@
     padding: 0;
     border: none;
     border-radius: 10px;
-    width: 3.3rem;
+    width: 4.3rem;
     height: 3.3rem;
     cursor: pointer;
     text-align: center;
 }
+
+/* .clouds-btns .btn {
+    margin: 2px 2px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    width: 3.3rem;
+    height: 3.3rem;
+    cursor: pointer;
+    text-align: center;
+} */
 
 .updates-btns .btn {
     border-radius: 10px;
@@ -74,9 +88,12 @@
     height: 3rem;
     font-size: 1.3rem;
     cursor: pointer;
-    margin: 0 7px;
+    margin: 0 7x;
     text-align: center;
     transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .updates-btns .btn:hover {
@@ -97,8 +114,45 @@ background-color: #66c4dc;
 .saved-meme-page.social-links{
     display: none ;
 }
+.saved-meme-page{
+    padding-bottom: 30px;
+}
 
 
 .font-type.btn{
     width: 4.3em;
+}
+
+
+.img-arrows{
+margin-top: 0.5em;
+}
+.img-plus{
+margin-top: 0.5em;
+}
+.img-trash{
+margin-top: 0.5em;
+}
+.img-download{
+margin-top: 0.5em;
+}
+.img-share{
+margin-top: 0.5em;
+}
+.img-save{
+margin-top: 0.5em;
+}
+
+.user-msg {
+    position: fixed;
+    bottom: -100px;
+    right: 10px;
+    background-color: #111;
+    padding: 10px;
+    color: white;
+}
+
+.user-msg.open {
+    bottom: 10px;
+    transition: bottom .5s;
 }

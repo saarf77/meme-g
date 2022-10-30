@@ -41,10 +41,6 @@ function onInit() {
   else {
     document.querySelector(".gallery-container").innerHTML = ''
     document.querySelector('section[class = "edit-container flex"]').style.visibility = 'hidden'
-    // document.querySelector(".gallery-container").style.display = 'bloack-grid'
-    // document.querySelector("input").style.display = 'bloack-grid';
-    // document.querySelector('section[class = "filters-container flex"]').style.display = 'bloack-grid';
-    // restartCanvasLocations()
     renderGallery()
     // var memes = loadFromStorage(STORAGE_KEY)
     // if (memes) gSavedMemes = memes
@@ -173,6 +169,7 @@ function onGalleryShow() {
 
 function onSaveMeme() {
   saveMemes()
+  flashMsg(savedMsg.save)
 }
 
 function renderMemes() {
@@ -237,4 +234,12 @@ function onFontSizeFilter(event) {
   gFilterBy = event.innerHTML.toLowerCase()
   onInit()
 }
+
+
+
+const realFileBtn = document.getElementById('real-file')
+const customBtn = document.getElementById('custom-button')
+  customBtn.addEventListener('click', function() {
+    realFileBtn.click()
+  })
 

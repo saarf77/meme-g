@@ -1,5 +1,6 @@
 let gMeme
 const ALL_MEMES = "ALL_MEMES"
+const savedMsg = {save:`The book has been saved`}
 
 function initGMeme() {
   gMeme = {
@@ -182,16 +183,18 @@ function saveMemes() {
   saveToStorage(ALL_MEMES, allSaveImg)
 }
 
+function flashMsg(msg) {
+  const el = document.querySelector('.user-msg')
+  el.innerText = msg
+  el.classList.add('open')
+  setTimeout(() => {
+      el.classList.remove('open')
+  }, 3000)
+}
+
 function getImage() {
   var dataURL = gElCanvas.toDataURL("image/png");
   return dataURL
-}
-
-function onSwitchLine() {
-  const elEditLine = document.querySelector('[name="text"]')
-  nextLine()
-  elEditLine.value = getLine()
-  renderMeme()
 }
 
 function nextLine() {
@@ -247,3 +250,41 @@ function shareAll() {
     console.log(err)
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function onSwitchLine() {
+//   const lineIdx = switchLine()
+//   const meme = getGMeme()
+//   renderMeme()
+// }
+
+// function switchLine() {
+//   gMeme.selectedLineIdx++
+//   if (gMeme.selectedLineIdx === gMeme.lines.length-2) gMeme.selectedLineIdx = 0
+//   return gMeme.selectedLineIdx
+// }
