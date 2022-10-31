@@ -169,7 +169,14 @@ function onGalleryShow() {
 
 function onSaveMeme() {
   saveMemes()
-  flashMsg(savedMsg.save)
+  // flashMsg(savedMsg.save)
+  Swal.fire({
+  position: 'middle',
+  icon: 'success',
+  title: 'Your Meme has been saved',
+  showConfirmButton: false,
+  timer: 1500
+})
 }
 
 function renderMemes() {

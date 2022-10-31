@@ -5,6 +5,13 @@ function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-image.jpg'
+    Swal.fire({
+    position: 'middle',
+    icon: 'success',
+    title: 'Download successfully',
+    showConfirmButton: true,
+    timer: 1500
+  })
 }
 
 function setMyUploadImg(imgId) {

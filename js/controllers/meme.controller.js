@@ -183,14 +183,14 @@ function saveMemes() {
   saveToStorage(ALL_MEMES, allSaveImg)
 }
 
-function flashMsg(msg) {
-  const el = document.querySelector('.user-msg')
-  el.innerText = msg
-  el.classList.add('open')
-  setTimeout(() => {
-      el.classList.remove('open')
-  }, 3000)
-}
+// function flashMsg(msg) {
+//   const el = document.querySelector('.user-msg')
+//   el.innerText = msg
+//   el.classList.add('open')
+//   setTimeout(() => {
+//       el.classList.remove('open')
+//   }, 3000)
+// }
 
 function getImage() {
   var dataURL = gElCanvas.toDataURL("image/png");
